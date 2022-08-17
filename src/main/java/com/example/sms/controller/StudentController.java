@@ -72,12 +72,10 @@ public class StudentController {
         return "redirect:/";
     }
 
-
-    //	delete student
-//    @GetMapping("/{id}")
+    // delete student
     @PostMapping("/delete/{id}")
     public String deleteStudent(@PathVariable Long id) {
-        studentService.delete_Student(id);
+        studentService.deleteStudent(id);
         return "redirect:/";
     }
 
