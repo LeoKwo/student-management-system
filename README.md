@@ -1,6 +1,6 @@
 # Student Management System
 
-This is a simple Student Management System web application using Spring Boot, Spring MVC, Thymeleaf, Spring Data JPA, and MySQL database.
+This is a simple Student Management System web application using Spring Boot, Spring MVC, Thymeleaf, Spring Data JPA, Docker and MySQL database.
 
 ## Technologies used
 - Java 11
@@ -35,6 +35,15 @@ mysql -uroot -p
 # Create sms db
 create database sms;
 ```
+
+## Configure your application.properties file
+```spring.datasource.url=jdbc:mysql://MYSQL_CONTAINER_NAME/sms```\
+MYSQL_CONTAINER_NAME should match your previously created container name.
+
+### Don't forget to change your username and password
+```spring.datasource.username=YOUR_USERNAME```
+```spring.datasource.password=YOUR_PASSWORD```
+
 ### Note
 **application.properties file is configured to run on Docker with MySQL running on Docker. To run this project with your localhost MySQL server, use this:**
 ```spring.datasource.url=jdbc:mysql://localhost:YOUR_MYSQL_PORT/sms?allowPublicKeyRetrieval=true&useSSL=false```
