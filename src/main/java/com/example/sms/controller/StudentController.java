@@ -13,15 +13,13 @@ public class StudentController {
 
     private StudentService studentService; // Java Bean
 
-   // StudentService studentService = new StudentService();
-
     public StudentController(StudentService studentService) {
         super();
         this.studentService = studentService;
     }
 
     //	List all students
-    @GetMapping("/")
+    @GetMapping("/list")
     public String listStudents(Model model) {
         // NullPointerException
         model.addAttribute("students", studentService.getAllStudents());
@@ -29,7 +27,7 @@ public class StudentController {
     }
 
     //	add student
-    @GetMapping("/new")
+    @GetMapping("/list/new")
     public String createStudentForm(Model model) {
 
         // created student object to hold student form data
@@ -39,10 +37,10 @@ public class StudentController {
     }
 
     //	save student
-    @PostMapping("/")
+    @PostMapping("/list")
     public String saveStudent(@ModelAttribute("student") Student student) {
         studentService.saveStudent(student);
-        return "redirect:/";
+        return "redirect:/list";
     }
 
     //	update student from page
@@ -69,14 +67,14 @@ public class StudentController {
         // save updated student object
         studentService.updateStudent(existingStudent);
 
-        return "redirect:/";
+        return "redirect:/list";
     }
 
     // delete student
     @PostMapping("/delete/{id}")
     public String deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
-        return "redirect:/";
+        return "redirect:/list";
     }
 
 }
